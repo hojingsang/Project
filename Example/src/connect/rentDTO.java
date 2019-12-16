@@ -1,6 +1,7 @@
 package connect;
 
 public class rentDTO {
+	//rentuser
 	private String id;
 	private String name;
 	private String password;
@@ -8,12 +9,92 @@ public class rentDTO {
 	private String myun;
 	private int gender;
 	
-	private String cno;
+	//carinfo
+	private String cid;
 	private String ctype;
 	private int cprice;
 	private int crent;
 	
+	//carrent
+	private String userid;
+	private String username;
+	private String usertel;
+	private String usermyun;
+	private int rentinfo;
+	private String rentno;
+		
 	public rentDTO() {	}
+
+	
+	public String getCid() {
+		return cid;
+	}
+
+
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
+
+	public String getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getUsertel() {
+		return usertel;
+	}
+
+
+	public void setUsertel(String usertel) {
+		this.usertel = usertel;
+	}
+
+
+	public String getUsermyun() {
+		return usermyun;
+	}
+
+
+	public void setUsermyun(String usermyun) {
+		this.usermyun = usermyun;
+	}
+
+
+	public int getRentinfo() {
+		return rentinfo;
+	}
+
+
+	public void setRentinfo(int rentinfo) {
+		this.rentinfo = rentinfo;
+	}
+
+
+	public String getRentno() {
+		return rentno;
+	}
+
+
+	public void setRentno(String rentno) {
+		this.rentno = rentno;
+	}
+
 
 	public String getId() {
 		return id;
@@ -63,13 +144,6 @@ public class rentDTO {
 		this.gender = gender;
 	}
 
-	public String getCno() {
-		return cno;
-	}
-
-	public void setCno(String cno) {
-		this.cno = cno;
-	}
 
 	public String getCtype() {
 		return ctype;

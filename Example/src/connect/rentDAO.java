@@ -132,4 +132,52 @@ public class rentDAO {
 		return result;
 	}
 	
+	public static int MaxCnt() {
+		int cnt = 0;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "select max(rentno) from carrent";
+		
+		try {
+			con = DBCon.getCon();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBCon.close(con, ps, rs);
+		}
+		return cnt;
+	}
+	
+	public static int reservationInsert(rentDTO rent) {
+		int result = -1;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = "insert into carrent (rentno,userid,username,usertel,usermyun) "
+				+ "values ((select max(rentno) + 1 from carrent),?,?,?,?)";
+		
+		try {
+			con = DBCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, rent.getUserid());
+			ps.setString(2, rent.getUsername());
+			ps.setString(3, rent.getUsertel());
+			ps.setString(4, rent.getUsermyun());
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBCon.close(con, ps, null);
+		}
+		return result;
+	}
 }
